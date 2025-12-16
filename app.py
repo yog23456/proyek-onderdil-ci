@@ -7,30 +7,6 @@ app.secret_key = 'kunci_rahasia_anda_yang_sangat_aman'
 
 db_config = { 'host': 'localhost', 'user': 'root', 'password': '', 'database': 'db_onderdil' }
 
-
-# --- DI DALAM FILE app.py ---
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-
-        # =========================================================
-        # TAMBAHKAN KODE INI (MOCKING UNTUK CI/CD)
-        # Tujuannya: Agar robot GitHub bisa login tanpa Database MySQL
-        # =========================================================
-        if username == "yogi_tes" and password == "12345":
-            # Pura-pura set session
-            session['logged_in'] = True
-            session['username'] = username
-            # Langsung lempar ke dashboard
-            return redirect(url_for('dashboard'))
-        # =========================================================
-
-        # ... Di bawah sini baru kode database asli Anda (cursor = mysql.connection...) ...
-        # ... kode lama jangan dihapus ...
-        
 def get_db_connection():
     return mysql.connector.connect(**db_config)
 

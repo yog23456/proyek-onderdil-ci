@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    
+    <div class="dashboard-header">
+        {% if role == 'admin' %}
+            <h2>Dashboard Admin</h2>
+        {% else %}
+            <h2>Dashboard Pengguna</h2>
+        {% endif %}
+        <p>Selamat datang kembali, {{ username }}! Berikut adalah ringkasan sistem Anda hari ini.</p>
+    </div>
+
+    <div class="dashboard-cards">
+        
+        <a href="{{ url_for('pilih_kendaraan', id_jenis=1) }}" class="card-link">
+            <div class="card">
+                <h3>JUMLAH DATA MOTOR</h3>
+                <p class="data-count">{{ jumlah_motor }}</p>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('pilih_kendaraan', id_jenis=2) }}" class="card-link">
+            <div class="card">
+                <h3>JUMLAH DATA SEPEDA</h3>
+                <p class="data-count">{{ jumlah_sepeda }}</p>
+            </div>
+        </a>
+
+    </div>
+{% endblock %}

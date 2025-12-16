@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Pilih Kendaraan{% endblock %}
+{% block content %}
+    <h2>Pilih Kendaraan</h2>
+    <div id="kendaraan-wrapper" class="kendaraan-wrapper">
+        {% for kendaraan in kendaraan_list %}
+        <div class="kendaraan-item" onclick="pilihKendaraan(this, {{ kendaraan.id_kendaraan }})">
+            <img src="{{ url_for('static', filename='images/' + kendaraan.gambar_kendaraan) }}" alt="{{ kendaraan.nama_kendaraan }}">
+            <p>{{ kendaraan.nama_kendaraan }}</p>
+
+            <a href="{{ url_for('toggle_favorit', id_kendaraan=kendaraan.id_kendaraan) }}" 
+               class="star-icon {% if kendaraan.id_kendaraan in favorit_ids %}favorited{% endif %}">
+               {% if kendaraan.id_kendaraan in favorit_ids %}★{% else %}☆{% endif %}
+            </a>
+            
+            <div class="sistem-cabang">
+                {% for sistem in systems_by_vehicle.get(kendaraan.id_kendaraan, []) %}
+                    <a href="/onderdil/{{ kendaraan.id_kendaraan }}/{{ sistem.id_sistem }}">{{ sistem.nama_sistem }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

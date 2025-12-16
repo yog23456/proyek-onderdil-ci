@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Detail Onderdil{% endblock %}
+{% block content %}
+    <a href="javascript:history.back()"><< Kembali</a>
+    <h2>{{ kendaraan.nama_kendaraan }}: {{ sistem.nama_sistem }}</h2>
+    <div id="onderdil-page-wrapper" class="onderdil-page-wrapper">
+        <div id="onderdil-grid" class="onderdil-grid">
+            {% for onderdil in onderdil_list %}
+            <div class="onderdil-item" onclick="tampilDetail(this)"
+                 data-nama="{{ onderdil.nama_onderdil }}"
+                 data-fungsi="{{ onderdil.fungsi }}"
+                 data-kerusakan="{{ onderdil.ciri_kerusakan }}"
+                 data-rekomendasi="{{ onderdil.rekomendasi }}"
+                 data-gambar="{{ url_for('static', filename='images/' + onderdil.gambar_onderdil) }}">
+                <img src="{{ url_for('static', filename='images/' + onderdil.gambar_onderdil) }}" alt="{{ onderdil.nama_onderdil }}">
+                <p>{{ onderdil.nama_onderdil }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="detail-panel" class="detail-panel">
+            <button id="close-detail" onclick="tutupDetail()">X</button>
+            <img id="detail-gambar" src="" alt="Gambar Onderdil">
+            <h3 id="detail-nama"></h3>
+            <h4>Fungsi</h4>
+            <p id="detail-fungsi"></p>
+            <h4>Ciri Kerusakan</h4>
+            <p id="detail-kerusakan"></p>
+            <h4>Rekomendasi Pengganti</h4>
+            <p id="detail-rekomendasi"></p>
+        </div>
+    </div>
+{% endblock %}

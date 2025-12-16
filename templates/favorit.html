@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Kendaraan Favorit{% endblock %}
+{% block content %}
+    <h2>Kendaraan yang Ditandai</h2>
+    <div class="kendaraan-wrapper">
+        {% for item in favorit_items %}
+            <div class="kendaraan-item">
+                <p><strong>{{ item.nama_jenis }}</strong></p>
+                <img src="{{ url_for('static', filename='images/' + item.gambar_kendaraan) }}" alt="{{ item.nama_kendaraan }}">
+                <p>{{ item.nama_kendaraan }}</p>
+                <a href="{{ url_for('toggle_favorit', id_kendaraan=item.id_kendaraan) }}" class="star-icon favorited">★</a>
+            </div>
+        {% else %}
+            <p>Anda belum menandai kendaraan apapun.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

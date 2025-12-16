@@ -1,0 +1,158 @@
+/* General Styling & Background */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: #f0f2f5;
+    background: linear-gradient(135deg, #000000 10%, #001f3f 100%);
+    overflow-x: hidden;
+}
+
+/* --- Halaman Login & Register --- */
+body.login-page-bg {
+    background: linear-gradient(135deg, #000000 10%, #001f3f 100%);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.auth-container { width: 100%; max-width: 400px; }
+.auth-form { padding: 30px; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.auth-form h2 { text-align: center; color: white; margin-top: 0; }
+.auth-form input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #555; border-radius: 4px; box-sizing: border-box; background: #2a2a3e; color: white; }
+.auth-form button { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+.auth-form p { text-align: center; font-size: 14px; margin-top: 15px; }
+
+/* --- STYLE NOTIFIKASI (MERAH & HIJAU) --- */
+.alert { 
+    padding: 12px; 
+    border-radius: 5px; 
+    margin-bottom: 15px; 
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid;
+    font-size: 14px;
+}
+.alert-danger { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+.alert-success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+
+/* --- STYLE UNTUK PASSWORD TOGGLE (MATA) --- */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px !important; 
+    box-sizing: border-box;
+}
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -7px; 
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+    color: #ccc;
+}
+
+/* --- STYLE MODAL LOGOUT --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.modal-overlay.active { display: flex; }
+.modal-content { background: #2a2a3e; padding: 25px 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid #555; text-align: center; max-width: 400px; }
+.modal-content h3 { margin-top: 0; }
+.modal-buttons { margin-top: 20px; display: flex; gap: 15px; justify-content: center; }
+.modal-buttons .btn-secondary, .modal-buttons .btn-danger { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold; text-decoration: none; color: white; }
+.modal-buttons .btn-secondary { background: #6c757d; }
+.modal-buttons .btn-danger { background: #dc3545; }
+
+/* --- Layout Utama Aplikasi --- */
+.app-layout { position: relative; min-height: 100vh; }
+.sidebar { position: fixed; left: 0; top: 0; height: 100%; width: 250px; background: rgba(12, 12, 22, 0.85); backdrop-filter: blur(8px); display: flex; flex-direction: column; padding: 20px; transition: transform 0.3s ease-in-out; z-index: 1000; box-sizing: border-box; }
+.main-content { margin-left: 250px; width: calc(100% - 250px); padding: 30px; transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out; min-height: 100vh; box-sizing: border-box; }
+.app-layout.sidebar-hidden .sidebar { transform: translateX(-100%); }
+.app-layout.sidebar-hidden .main-content { margin-left: 0; width: 100%; }
+
+/* Header di Main Content */
+.main-header { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
+.sidebar-toggle { font-size: 24px; cursor: pointer; color: #aaa; }
+.brand-header { font-size: 24px; color: #00aaff; font-weight: bold; margin: 0; }
+.page-content { background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 8px; }
+
+/* Sidebar Navigation */
+.main-nav { padding-top: 20px; }
+.main-nav p { color: #888; text-transform: uppercase; font-size: 12px; font-weight: bold; }
+.main-nav ul { list-style: none; padding: 0; margin: 0 0 20px 0; }
+.main-nav a { display: flex; justify-content: space-between; align-items: center; padding: 10px; color: #ddd; text-decoration: none; border-radius: 5px; }
+.main-nav a:hover { background-color: #007bff; color: white; }
+.submenu { display: none; padding-left: 20px; }
+.has-submenu.open > .submenu { display: block; }
+.has-submenu.open .arrow { transform: rotate(90deg); }
+.arrow { display: inline-block; transition: transform 0.2s; }
+
+/* Halaman Dashboard */
+.dashboard-header { background: linear-gradient(90deg, rgba(69, 75, 125, 0.7), rgba(40, 45, 80, 0.7)); padding: 24px; border-radius: 12px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }
+.dashboard-header h2 { margin: 0 0 8px 0; font-size: 26px; color: #FFFFFF; }
+.dashboard-header p { margin: 0; font-size: 16px; color: #d0d0d0; }
+.dashboard-cards { display: flex; gap: 30px; }
+.card { background: rgba(255, 255, 255, 0.1); padding: 20px 25px; border-radius: 12px; text-align: left; flex-grow: 1; border: 1px solid rgba(255, 255, 255, 0.2); }
+.data-count { font-size: 42px; font-weight: bold; margin: 10px 0 0 0; color: #00aaff; }
+
+/* --- STYLE BARU UNTUK CARD-LINK --- */
+.card-link {
+    text-decoration: none; /* Hapus underline */
+    color: inherit; /* Warisi warna teks (putih) */
+    flex-grow: 1; /* Pastikan link mengisi ruang */
+}
+.card-link .card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-link:hover .card {
+    transform: translateY(-5px); /* Efek mengangkat saat hover */
+    box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4); /* Efek glow biru */
+}
+
+
+/* Halaman Pilih Kendaraan */
+.kendaraan-wrapper { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 40px; }
+.kendaraan-item { cursor: pointer; transition: all 0.3s ease; position: relative; background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; text-align: center; }
+.kendaraan-item img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #555; }
+.kendaraan-wrapper.selection-active .kendaraan-item:not(.terpilih) { filter: blur(4px); opacity: 0.5; transform: scale(0.9); }
+.kendaraan-item.terpilih { transform: scale(1.1); box-shadow: 0 0 25px rgba(0, 170, 255, 0.7); }
+.sistem-cabang { display: none; margin-top: 20px; position: absolute; left: 100%; top: 20px; width: 200px; text-align: left; z-index: 20; }
+.kendaraan-item.terpilih .sistem-cabang { display: flex; flex-direction: column; gap: 10px; }
+.sistem-cabang a { background: #007bff; color: white; padding: 8px 15px; border-radius: 20px; }
+.star-icon { font-size: 24px; color: #ccc; text-decoration: none; margin-top: 5px; display: block; }
+.star-icon.favorited { color: #ffc107; }
+
+/* Halaman Detail Onderdil */
+.onderdil-page-wrapper { display: flex; gap: 20px; }
+.onderdil-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; transition: width 0.5s ease; }
+.onderdil-item { cursor: pointer; text-align: center; background: rgba(255, 255, 255, 0.1); padding: 10px; border-radius: 10px; }
+.onderdil-item img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
+.detail-panel { width: 0; padding: 0; overflow: hidden; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); border-radius: 10px; transition: all 0.5s ease; position: relative; }
+#close-detail { position: absolute; top: 10px; right: 10px; border: none; background: #555; color: white; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: none; }
+.onderdil-page-wrapper.detail-aktif .onderdil-grid { width: 60%; }
+.onderdil-page-wrapper.detail-aktif .detail-panel { width: 40%; padding: 20px; }
+.onderdil-page-wrapper.detail-aktif #close-detail { display: block; }
+.detail-panel img { width: 100%; max-width: 200px; display: block; margin: 0 auto 20px; border-radius: 10px; }
+
+/* Form Tambah Data */
+.add-data-form { background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 8px; }
+.add-data-form label { display: block; margin-top: 15px; margin-bottom: 5px; }
+.add-data-form input, .add-data-form select, .add-data-form textarea { width: 100%; padding: 10px; background: #2a2a3e; color: white; border: 1px solid #555; border-radius: 4px; box-sizing: border-box; }
+.add-data-form button { width: auto; padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px; }

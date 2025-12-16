@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Tambah Onderdil{% endblock %}
+{% block content %}
+    <h2>Form Tambah Data Onderdil Baru</h2>
+    <form method="post" class="add-data-form">
+        
+        <label for="select-jenis">Pilih Jenis Kendaraan:</label>
+        <select id="select-jenis" name="id_jenis" required>
+            <option value="" disabled selected>-- Pilih Jenis --</option>
+            {% for jenis in jenis_list %}
+            <option value="{{ jenis.id_jenis }}">{{ jenis.nama_jenis }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="select-kendaraan">Pilih Kendaraan:</label>
+        <select id="select-kendaraan" name="id_kendaraan" required disabled>
+            <option value="">-- Pilih Jenis Terlebih Dahulu --</option>
+        </select>
+
+        <label for="select-sistem">Pilih Sistem:</label>
+        <select id="select-sistem" name="id_sistem" required disabled>
+            <option value="">-- Pilih Kendaraan Terlebih Dahulu --</option>
+        </select>
+
+        <label for="nama_onderdil">Nama Onderdil:</label>
+        <input type="text" id="nama_onderdil" name="nama_onderdil" required>
+
+        <label for="fungsi">Fungsi:</label>
+        <textarea id="fungsi" name="fungsi" required></textarea>
+
+        <label for="kerusakan">Ciri Kerusakan:</label>
+        <textarea id="kerusakan" name="kerusakan" required></textarea>
+
+        <label for="rekomendasi">Rekomendasi:</label>
+        <textarea id="rekomendasi" name="rekomendasi" required></textarea>
+
+        <label for="gambar">Nama File Gambar (e.g., busi_baru.jpg):</label>
+        <input type="text" id="gambar" name="gambar" required>
+
+        <button type="submit">Tambah Onderdil</button>
+    </form>
+{% endblock %}

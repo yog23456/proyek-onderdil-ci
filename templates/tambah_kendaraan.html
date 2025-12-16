@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Tambah Kendaraan{% endblock %}
+{% block content %}
+    <h2>Form Tambah Kendaraan Baru</h2>
+    <form method="post" class="add-data-form">
+        <label for="id_jenis">Pilih Jenis Kendaraan:</label>
+        <select name="id_jenis" id="id_jenis" required>
+            <option value="" disabled selected>-- Pilih Jenis --</option>
+            {% for jenis in jenis_list %}
+            <option value="{{ jenis.id_jenis }}">{{ jenis.nama_jenis }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="nama_kendaraan">Nama Kendaraan:</label>
+        <input type="text" id="nama_kendaraan" name="nama_kendaraan" required>
+
+        <label for="gambar_kendaraan">Nama File Gambar (e.g., motor_baru.png):</label>
+        <input type="text" id="gambar_kendaraan" name="gambar_kendaraan" required>
+        
+        <label for="sistem_list">Daftar Sistem (pisahkan dengan koma):</label>
+        <textarea id="sistem_list" name="sistem_list" rows="3" placeholder="Contoh: SISTEM MESIN, SISTEM CVT, SISTEM RANGKA"></textarea>
+
+        <button type="submit">Tambah Kendaraan</button>
+    </form>
+{% endblock %}

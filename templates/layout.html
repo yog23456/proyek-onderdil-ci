@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - AsepOnderdil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="app-layout" class="app-layout">
+        
+        <aside class="sidebar">
+            <nav class="main-nav">
+                <p>MENU UTAMA</p>
+                <ul>
+                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li class="has-submenu" id="jenis-kendaraan-menu">
+                        <a href="#"><span>Jenis Kendaraan</span> <span class="arrow">▶</span></a>
+                        <ul class="submenu">
+                            <li><a href="/pilih/1">Motor</a></li>
+                            <li><a href="/pilih/2">Sepeda</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ url_for('favorit') }}">Kendaraan yang Ditandai</a></li>
+                    
+                    {% if session.role == 'admin' %}
+                    <li><a href="{{ url_for('tambah_kendaraan') }}">Tambah Kendaraan</a></li>
+                    <li><a href="{{ url_for('tambah_onderdil') }}">Tambah Onderdil</a></li>
+                    {% endif %}
+                </ul>
+                <p>SEDIA</p>
+                 <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    {% if session.user_id %}
+                    <li><a href="#" id="show-logout-modal">Logout ({{ session.username }})</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div id="sidebar-toggle" class="sidebar-toggle">☰</div>
+                <h1 class="brand-header">AsepOnderdil</h1>
+            </header>
+
+            <div class="page-content">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+                
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+    
+    <div id="logout-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Konfirmasi Logout</h3>
+            <p>Anda yakin ingin keluar dari sesi ini?</p>
+            <div class="modal-buttons">
+                <button id="cancel-logout-btn" class="btn-secondary">Batal</button>
+                <a href="{{ url_for('logout') }}" class="btn-danger">Ya, Logout</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

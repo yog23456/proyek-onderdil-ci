@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 
+
 # Inisialisasi Aplikasi
 app = Flask(__name__)
 app.secret_key = 'bebas_aja_kuncinya'  # Diperlukan untuk session & flash message
@@ -122,6 +123,7 @@ def edit(id):
 # ====================================================================
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
 

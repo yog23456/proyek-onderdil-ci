@@ -76,37 +76,52 @@ def logout():
 
 
 # ====================================================================
-# DUMMY ROUTES (TAMBAHAN SUPAYA TIDAK ERROR)
+# DUMMY ROUTES (FINAL FIX)
 # ====================================================================
 
 @app.route('/register')
 def register():
-    return "Halaman Register (Mock)"
+    return "Register (Mock)"
 
 @app.route('/favorit')
 def favorit():
-    return "Halaman Favorit (Mock)"
+    return "Favorit (Mock)"
 
-# Jaga-jaga jika ada link ini di sidebar/navbar layout.html
 @app.route('/profil')
 def profil():
-    return "Halaman Profil (Mock)"
+    return "Profil (Mock)"
 
 @app.route('/tambah_kendaraan')
 def tambah_kendaraan():
-    return "Halaman Tambah (Mock)"
-
-@app.route('/lihat_kendaraan')
-def lihat_kendaraan():
-    return "Halaman Lihat (Mock)"
+    return "Tambah Kendaraan (Mock)"
 
 @app.route('/tambah_onderdil')
 def tambah_onderdil():
-    return "Halaman Tambah Onderdil (Mock)"
+    return "Tambah Onderdil (Mock)"
+
+@app.route('/lihat_kendaraan')
+def lihat_kendaraan():
+    return "Lihat Kendaraan (Mock)"
+
+# --- INI YANG TADI BIKIN ERROR ---
+@app.route('/pilih_kendaraan/<id_jenis>')
+def pilih_kendaraan(id_jenis):
+    return "Pilih Kendaraan (Mock)"
+# ---------------------------------
+
+# Jaga-jaga kalau ada tombol hapus/edit (Antisipasi Error Berikutnya)
+@app.route('/hapus/<id>')
+def hapus(id):
+    return "Hapus (Mock)"
+
+@app.route('/edit/<id>')
+def edit(id):
+    return "Edit (Mock)"
 # ====================================================================
 # MAIN
 # ====================================================================
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 

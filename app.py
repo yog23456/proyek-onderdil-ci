@@ -99,9 +99,14 @@ def tambah_kendaraan():
 @app.route('/lihat_kendaraan')
 def lihat_kendaraan():
     return "Halaman Lihat (Mock)"
+
+@app.route('/tambah_onderdil')
+def tambah_onderdil():
+    return "Halaman Tambah Onderdil (Mock)"
 # ====================================================================
 # MAIN
 # ====================================================================
 if __name__ == '__main__':
     app.run(debug=True)
+
 

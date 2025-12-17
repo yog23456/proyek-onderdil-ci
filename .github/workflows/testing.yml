@@ -1,4 +1,4 @@
-name: Automated Testing Pipeline
+name: Automated Mockup Testing
 
 on:
   push:
@@ -7,40 +7,29 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  run-unit-tests:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    # 1. Ambil kode terbaru
+    - uses: actions/checkout@v4
 
+    # 2. Siapkan Python
     - name: Set up Python 3.13
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: "3.13"
 
-    - name: Setup Chrome
-      uses: browser-actions/setup-chrome@latest
-
+    # 3. Install Flask
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest pytest-html selenium webdriver-manager
+        pip install flask flask-mysqldb
+        # Install requirements jika ada
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Start Flask App
+    # 4. JALANKAN TEST UNIT (YANG BARU)
+    # Perhatikan: Kita panggil test_unit.py, BUKAN 78.py
+    - name: Run Unit Tests
       run: |
-        # Menjalankan app.py di background
-        python app.py &
-        sleep 5
-
-    - name: Run Automated Tests
-      run: |
-        # Menjalankan file test kamu (78.py)
-        pytest 78.py --html=laporan_github.html
-
-    - name: Upload Test Report
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-report
-        path: laporan_github.html
+        python -m unittest test_unit.py

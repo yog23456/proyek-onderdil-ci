@@ -74,8 +74,34 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
+
+# ====================================================================
+# DUMMY ROUTES (TAMBAHAN SUPAYA TIDAK ERROR)
+# ====================================================================
+
+@app.route('/register')
+def register():
+    return "Halaman Register (Mock)"
+
+@app.route('/favorit')
+def favorit():
+    return "Halaman Favorit (Mock)"
+
+# Jaga-jaga jika ada link ini di sidebar/navbar layout.html
+@app.route('/profil')
+def profil():
+    return "Halaman Profil (Mock)"
+
+@app.route('/tambah_kendaraan')
+def tambah_kendaraan():
+    return "Halaman Tambah (Mock)"
+
+@app.route('/lihat_kendaraan')
+def lihat_kendaraan():
+    return "Halaman Lihat (Mock)"
 # ====================================================================
 # MAIN
 # ====================================================================
 if __name__ == '__main__':
     app.run(debug=True)
+

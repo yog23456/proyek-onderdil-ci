@@ -1,6 +1,7 @@
 import unittest
 from app import app
 
+
 class TestAplikasi(unittest.TestCase):
 
     # Persiapan sebelum setiap tes dijalankan
@@ -83,4 +84,5 @@ class TestAplikasi(unittest.TestCase):
             print("\n[OK] Test 4: Logout berhasil.")
 
 if __name__ == "__main__":
+
     unittest.main()

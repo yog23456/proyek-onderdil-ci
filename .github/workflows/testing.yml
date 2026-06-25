@@ -25,13 +25,10 @@ jobs:
     # 3. Install Flask
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install flask flask-mysqldb
-        # Install requirements jika ada
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
     # 4. JALANKAN TEST UNIT (YANG BARU)
     # Perhatikan: Kita panggil test_unit.py, BUKAN 78.py
     - name: Run Unit Tests
-      run: |
-        python -m unittest test_unit.py
+      run: pytest -v
